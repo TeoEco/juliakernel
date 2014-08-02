@@ -5,8 +5,7 @@
 
 [![Julia](http://img.youtube.com/vi/GnBAp90lwcc/0.jpg)](http://www.youtube.com/watch?v=GnBAp90lwcc)
 
-
-Welcome to the [juliakernel](http://juliabot.com/julia/)\!
+**Site project**: [link](http://juliabot.com/julia/)\
 
 **Install (testing on Ubuntu 13.10 and Ubuntu 14.04)**:
 `sudo sh install.sh`
