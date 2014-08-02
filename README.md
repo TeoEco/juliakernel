@@ -1,4 +1,6 @@
-**Artficial Intelligence video**:
+**Julia - is  Artficial Intelligence**
+
+**Example video**:
 
 
 [![Julia](http://img.youtube.com/vi/GnBAp90lwcc/0.jpg)](http://www.youtube.com/watch?v=GnBAp90lwcc)
