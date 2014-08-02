@@ -24,6 +24,9 @@ Cairo
 GSL
 Prettyprint
 
+**Used technologies**:
+Newton interpolation,hash-functions,multidimensional arrays on pointers,system search regularities,system of values
+
 **Run in Ubuntu**:
 Run GUI - `firefox ./julia-html-gui/index.html`
 Run Juliakernel - `./juliakernel/build/ai.run`
