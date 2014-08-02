@@ -6,7 +6,7 @@ Welcome to the [juliakernel](http://juliabot.com/julia/)\!
 `sudo sh install.sh`
 
 **Compile**:
-`make`
+`cd juliakernel/ && make`
 
 **Used Libs**:
 OpenMP
