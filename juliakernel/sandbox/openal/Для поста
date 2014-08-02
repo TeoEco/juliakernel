@@ -1,0 +1,5 @@
+ Maybe the package name has been changed? Use apt-get install libopenal-dev will install the package successfully, while apt-get install openal-dev will get a message "unable to locate package openal-dev". –  wind Nov 9 '13 at 19:33 
+
+g++ p.cpp -lalut -lopenal -o p
+
+

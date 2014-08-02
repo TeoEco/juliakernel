@@ -1,0 +1,101 @@
+<html>
+	<head>
+	<meta charset="utf-8">
+<style>
+.frames
+{
+width:80%;
+height:70%;
+};
+.table_input_output img
+{
+width:18px;
+height:18px;
+margin:3px;
+vertical-align:middle;
+};
+.table_input_output span
+{
+font-size:11px;
+};
+</style>
+	</head>
+<div>
+<!--<img src="file:///home/ruslan/julia/structs/1.bmp" width=500 height=500>-->
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAPmUlEQVR4nO2de5RXVRXHP8NDTARFRIRUIEExtTRR0zQ0NVeJafhITERdSqLmO/FVjo/IMvBVPkBJLR+p+MplihmURsAiU8oQNHSBmoKiyGMGmUd/7Llr7ty5Z59z7uP3mLnftb7/zNy97z7n7t+95+yzzz5QoEAnwinAwxYeUi7jCmSHwcBJMX+/EWi28IyIzBbA8cA2OdlaIANsC5wITAP+izzItTHXJXGAwS1/bwIWAjcBRyKOUaCMGA5cCsxHHk70QWbtAFF+BjwPTAAGZtaqAiq2AiYCi7A/yLwdIMoFwHjgcxm0s0AEg4DJwMe4PYxyOEDA5cibqU/KNhcA9gIeBDbi9xDK6QAB1wA3t8gX8MQeyPc1ScdXigMEbATuoxgnOKEfcDsywEra4esQ55kYoz+JA/QCJgFzSPYmCrgauBLYNEnHdHTUIEGaD0nWue8BtwGHAZso90niAGFsDhwL3A98ktDWJcDB1h7pRBgKvECyV/w9wEigi+O90jpAGJsARwNP4v9maAKmI7OaTo1xyGDJp/PeQKZbvRLcL0sHCKM/cDmwwrMty4GvJ7hf1aMP8Bh+nTUXicDVpLhvXg4QYBPgZGCxw33Cb4Ob0T9dHQrD8eugpcAY0j34ABOQAaLGb2dwnx7ARcBHuLdzFtA3g3tXNEYCq3DrkA+BC5DOrFb0AW4A6nFr82JkTNQh8X3cO+JRZEqYBEOAs5Cl3SwwEAlGjU1h03BgHm5tXwHsl87kysOFxC/YRPkR8rr3xXbIK3d+SFdcICgJBod0NiCfidOBLT31dEMGihuw98N6svkUVQTOxc3zZwMDPPTWIMkbjyEPJqovDwcIcx0wFYla+uDLSCzA1h91SFyjqnEmbr/8W4DuHnpHAf+06GxEVujScqGD/c8CIzzs3xJ4xkHvOuAgD70VhVOxP/w6JALoigOQkKzLG6XUbELeRsMc29IFCTHb+mgtsL9zD1UIvoE9nr8aeaAu6A/ci9vbpNysB64FNnNs2ynEf8LCXIEMbqsCQ7HPf1fjPtI9Fb88gErhW7i/vk/C7gQLSRb9LCm2RgI3WkNW4jZw2gp43KKr0ukT5RuFfZr8HDKbqEjUAE+hN2AtsI+Drt3wixZWOmfjllU8Bvtn7moHPWXBOeiGbwQOd9BzJOIo5X5oWfNdYE+H9l9s0dOIRFQrCjsjUxbN8HMd9JyD/VtYzVyDW4DnDouepUBvBz0lQRfgRXSD73bQ4xowqnbWYw/w9AD+ZtHza2uPlggXohs6D/sgaBzVMcXLii5z+22A9xUdTcChFh25YwB6Qsen2OevY5DvWrkfSqn5KbC3pW8OQ/9hLMYvgpo5bo8xKkzbd39vJBpY7odRLr6Hff1jukXHDyzyuWF39AHbM+hJHAOB/ynynYVz0XMeeqIvHq2kTPsUn1aMWgPsoMh2Bf6kyHc23qT2tITWNfnrLPKZ4+sWg2ot8tda5Dsjj7X0mRYVXY+sl5QM2lLmcvQNkiPo2HP9pPwQPVo4DH2BbZIimyl2RR+Zalm13YFXFdnOzt8qfQcy9zfJrkI2ruSOuxUjXkO+7yZcosgWFGrh8n7I9NEk6xJtTYV+yPfGZMD3FNkBdMwYf9ZcjL7iN0mRXYL7LqlE+LFy8zfRf/23KLIF2/I0pR/7o8dOvqPIpkINrfV34qgFJIaQbsdvZ+My9NiAFoB7TJFLhRHKTT9BT4GyrW4VbM8zlf7cTZGrI6eVwsnKTW9X5AbhlgtfsC2Xoy+i/V2RHafIJUJX9LCtluhwvSJXUOcJSr+eosg9r8glwsHKzf6jyHUF3lFkC+p8VunbXpgHgxvJuLDlrxQjaxW5IxS5gnY2oq+paFvs02xzb4fXlRvtpMg9qcgVdOM1Sv8er8hltTmWAZhDv68rcv0opn5Z8G3My+q9lT7+QJHzwkmKcVMUuVMVuYJ+/IrSz1p9pS8pcs7QYv9a3PphRa6gH69U+llbXzlfkXPGmwblGzAHf7rhXgmkoJ0vGvoZpJqqSe5xRa4dtkde9+NDPF9RPlfRdUAGjS7Yyo2Yaw93w5yY+zFtn+d44DhiytMdjn9y5mSDQaCvWBVMxuOV/vZNr1tBZPb2XAKDRisG2TY1FPTnbUp/X5NA3y/DCuYnUDDIYEw39JyBgsk4z9DfAEcl0Dc9rMDXAVYpxmgrVQWTsw7zJpBBCfSlcoC/GAwBKQeXpqENLfovRULJQbjzGWRj5SVIUcU0lbuz5nok6nk2sl0riJxOBo5BXtG2mkYu3N3Q5zX4F9FI5QDa90hbNtZYj5RyHRzRd2fL/6MJk9sj37Fy7ixaiZSlj5aMe7nl/9EcvT2BB0i+D3IcZrzkqSuVA1ygGDIrQcMWI1vM42BygAA7Av9KcM+0fBZzaVeTAwQ4kGRlb7QNJPd46krlAEcqhnyQoGEzFH02B6Dlf6V2gMsUe2wOAMkqoGjr/Fd66krlALsYjOiB3+stmC1k5QCl+BwENmflAD42a4tvYzzbkcoBTCHgHT10zAFuJVsHuAt7sYo0nBrSn5UDXIaUj3G5/zpF3/6ebUnsAKsVI0Y66qhDyslNIVsHuAMZROax/+ANZKdu1g5wOn6JM6aQ8BDP9rRxgPs8BLXXkOsU8NaW6/NwAJDZQdYOcHKL7jwcAGTq62KHaSq4KX6f3x+FhT+P+1tgltKoiQ7ynyHVvSE/B7BtnvDlUlp36+TlAIc62vItRafLARUNSMxCPeG0h6JAe1i3KnIBZ4eu1xygC1KjPyg8uQzJhI3bfRR1AJBpWlYOcENIr+YAPZFf1uqWa+ZjLggVdYAuSFzBZst4gz6Qz1SczBJFJhZ9FQOmK3K/c2jAJaHrTQ7QDXjEIP8E7fPl4xzgPAdbXBk+5s3kANvQ+suPspb2iDoAuPVf3HmIARYYZN5TZGIxSDHgRkVuhkMDwpWtTA4wwaIjmukS5wAHOtjiynAJFpMDaLV8moCvRa6Pc4ALHGypxQxTetinikwsdlUM0EqVutTA3y10vckBbMervBq5Ps4BhjrY4sL1kXvFOUB37LufpkX0xDmAy1z+55hhShNvxCFBdB/ktTkR/Vt+qaJjlkMDwmfomhzA9i1cE7k+zgH6ONjiwncj94pzAJcp2AsRPXEO8E0HPbdgxv2K3BXIs51ATNjdpUhxwIsUA7T9agGLN4Ag6RsgqieMexzbVE9kO5/PSd3nKQa84iDvMgY4w6Ljh5HrK2EMcKci3wR8NXJ9nAPYqq42IwNFE6Z5tKnNWM4nEniWYoDLAkf4E2JygC6Yg1MP0b6CRpwDuAyoXHlISK/JAbYk/s3VRNuZT4A4B3jAwRZtGn6bR5sSh4LPVgwwpZCHGU5xzjMO4PNWszG8ASavOEA33AI5Txj0gb1yayYOEOfNAVzW5RuAL7Rcn1ckcDuyrUkQ3qufVyRwlKMtDyg6fZbFEzuAtllxrqOO37Rcn5cD5FGRJHjz5eEANZiDSFFqg0CfI3YSO4C2H/DPjjo+Q2INeTjAzrgfUevDZchgMA8HOM7DDi0ryOezl9gBpioGPOqhZwmto9asHOBe4N8eNvhyBq25d1k5wHVIjSVXG36i6HR9A6dygAcVA3xGoc20rthVU0ZQcI9yZAQ1o1dje81DT2IHmK0YcJVnY8K/LBOKnMC2PFrR6ZNo2sYBXI82b0ZfWrQt4phYZAW703TUzGaeetqc43SXh6CWl+Y6lYljsS/AjdsTj2GeetrY1g9ZSVqJbPtahV7epd324hZ8MUXDAjYgg5lJSA398M6gY5BB0xwqb2fQTOByZPdSsDNoCrLl/iayGZzWYa4FrFVyq6P1ub6PjNWsZw3dqyjU8tKq5QCoRmQKNqVM90/CRYZ+B72Uz8WKnBFXKQq/q8gtS9i4UnIjbSubV8sJJn9Q+v1qRU57XkaMVRRqNWtcg0GV8vADXFcBttmoBYFMKXTNuB3W3Q7acur9ipx2qkW52YQ5qbIGOem73DZq1ApIa2OMRKeK9VcUvqLInZ6wcaV4+OEgSlfgRNqu1tVQ2ecamA6a1BJS3jfIOMF0dGk95lMt9kjYuDzZiCwl02L3eKQAY/D/V5F4fJA399MKsDnKDZirh2s5nDMNMk7QFhdMgZvuVNZpoI1I0crgwb+lXDuX1p3PlVbo6mVDf4O+mKQV87LiRkWxViTqH4pcKdmEHEk/GljoIfcCUuquksYz2gnstYqcdvyMFacpirX05KmKXCk5k3SlWWbivk6fN7VMrD8qciMUOSt2URS/pMidoMgVTMbhhr7uSmsKWpTrSHm6eA3mPLU6zIOSvlRPRLAa+Lahn0Gisia52YqcM7TdPvspcqZ9agX9qX3/z1LkrlfknHGFcoNaRa5awqvVQO1g6ScUuVGKnDMOUm6g1Qu0nTBe0I0NmFdfu2LOK2jEnK/ghU0wn1e7AfOBxd0xD04KulOryr6vIjdfkfOGtu1bOy/Yp/RMwXhqezG1I/lqFTlvaHv1HlLkDlfkCtrZQNvd1FEsUWT3VeS8sR3mNKY1SCJIHGwHThbUGd1SHoYW/19BDqeIB3v04niEIpdHxa7OwrFKv2qVQZ9S5BJDyznXTqzegcrK36sWvoM5itcFfVHr9wa5VNAcYCOwrSKrnXBZMJ61Sn8eZJEtuQM0ox9RVsQE/Lge/QelFaQqmwMsQh94zLbIZ816ZJ08Lc8usd3NSGqaCX2xl8ItiwM0o4csRzrIZ8m1WTQa/xq8aWn79bscEFU2B5hj0ZFl9c6O6gC/UGzZDLdqomVzgGbke2/CMPLZu99RHOAdzKF1kO1cLnrK6gBaoghIiZkFJaB23KoPBpbI3gXI1jcTNsc9qFZWB2hGXx8okAw+Sapld4ClSMXxAtlgB/wyrcvuAM0k3JBYIBa+q6oV4QD1yIJFgXQYjf9gsiIcoBn4K/ZVqXORDSidkUdZ+mYLpEZh1TpAM3qdHJDM4zHoixsdjSuR1Hkb7k6ov6IcYAOyy8aGHkj2i0u51GrmI8jpIjak2WRbUQ7QjDzUoY736YlUJE9yAmklczGyiueCg0m3hJ6LAzxCuiDHNBxOrQihL5LzlscZgKVkI3IAR2/HdvcEniZdX//M8V5Vga2QtfFqyzBuAh7GvIu6gCe2Rt4Iwdm9lcwXaX9ARIGMMASpi1+JjrAIqdaVeUJmgfbojQwWXQ9ezpPzaHsUToESohdy1o6WtZzngx9N8YuvGOyFlJZdR34P/QNkLLJTidpUIAG2Rap5ByVb07IBqX84FsuhywUqD8ORgs5z8CtasRwpUH0i5t25BaoM/ZFM30lItCxYlJmBHLp4OZKVs2OZ7CtQoLT4P4ZncMxSf9BUAAAAAElFTkSuQmCC">
+<h1>Система искусственного интеллекта</h1></div>
+
+<div>
+	<table id="frames">
+<td valign="top" id="td1">1</td>
+<td valign="top" id="td2">2</td>
+<td valign="top" id="td3">3</td>
+<td valign="top" id="td4">4</td>
+<td valign="top" id="td5">5</td>
+<td valign="top" id="td6">6</td>
+	</table>
+<div id="footer">
+	<table id="table_input_output"><td style='left:0;font-size:9px;'>
+	<span>Устройства ввода:</span><br>
+	<img width='16' height='16' src='images/mic.png'>Микрофон<br>
+	<img width='16' height='16' src='images/screen.png'>Монитор<br>
+	<img width='16' height='16' src='images/audio.png'>Линейный звуковой вход<br>
+	<img width='16' height='16' src='images/show.png'>Вебкамера<br>
+	<img width='16' height='16' src='images/nintendo.png'>Игра Денди<br>
+	<img width='16' height='16' src='images/games.png'>Игра 3d<br>
+	<img width='16' height='16' src='images/video.png'>Видео<br>
+	<img width='16' height='16' src='images/picture.png'>Картинки<br>
+	<img width='16' height='16' src='images/text.png'>Текст<br>
+	<img width='16' height='16' src='images/processor.png'>Порты ввода<br>
+	<img width='16' height='16' src='images/keyboard.png'>Клавиатура<br>
+	<img width='16' height='16' src='images/mouse.png'>Мышь<br>
+	<img width='16' height='16' src='images/internet.png'>Сервер<br>
+	</td><td style='left:0;font-size:9px;'>
+	<span>Устройства вывода:</span><br>
+	<img width='16' height='16'  src='images/volume.png'>Динамики<br>
+	<img width='16' height='16' src='images/screen.png'>Монитор<br>
+	<img width='16' height='16' src='images/audio.png'>Линейный звуковой вход<br>
+	<img width='16' height='16'  src='images/show.png'>Вебкамера<br>
+	<img width='16' height='16'  src='images/nintendo.png'>Игра Денди<br>
+	<img width='16' height='16'  src='images/games.png'>Игра 3d<br>
+	<img width='16' height='16' src='images/video.png'>Видео<br>
+	<img width='16' height='16' src='images/picture.png'>Картинки<br>
+	<img width='16' height='16' src='images/text.png'>Текст<br>
+	<img width='16' height='16' src='images/processor.png'>Порты вывода<br>
+	<img width='16' height='16' src='images/keyboard.png'>Клавиатура<br>
+	<img width='16' height='16'  src='images/mouse.png'>Мышь<br>
+	<img width='16' height='16' src='images/internet.png'>Сервер<br>
+	</td></table>
+</div>
+<div id="video">123456</div>
+</div>
+</body>
+<script type="text/javascript">
+//Sleep time ms
+function sleep(ms) {
+ms += new Date().getTime();
+while (new Date() < ms){}
+} 
+//Play video from images list
+function video(name,count)
+{
+	for(i=1;i<=count;i++)
+	{
+	document.getElementById('video').innerHTML='<img src="images/'+name+'-'+i+'.bmp">';
+	sleep(100);	
+	}
+}
+//Function - connecter with C++ application 
+//Мост между HTML страницей интерфейса и С++ приложением
+function add_message()
+{
+alert(document.getElementById('video').innerHTML);
+document.getElementById('video').innerHTML='Yes ,it is cool';
+alert(document.getElementById('video').innerHTML);
+//alert("Yes ,it is cool");
+}
+</script>
+</html>
+
+
+

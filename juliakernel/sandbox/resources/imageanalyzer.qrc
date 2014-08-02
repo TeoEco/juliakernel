@@ -1,0 +1,25 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>index.html</file>
+	<file>images/audio.png</file>
+	<file>images/bellaCoola.jpg</file>
+	<file>images/comport.png</file>
+	<file>images/games.png</file>
+	<file>images/girl.png</file>
+	<file>images/keyboard.png</file>
+	<file>images/mic.png</file>
+	<file>images/mtRainier.jpg</file>
+	<file>images/nintendo.png</file>
+	<file>images/processor.png</file>
+	<file>images/screen.png</file>
+	<file>images/screen1.png</file>
+	<file>images/screen2.png</file>
+	<file>images/show.png</file>
+	<file>images/text.png</file>
+	<file>images/video.png</file>
+	<file>images/volume.png</file>
+	<file>images/mouse.png</file>
+	<file>images/picture.png</file>
+	<file>images/internet.png</file>
+</qresource>
+</RCC>
