@@ -27,6 +27,9 @@ Prettyprint
 **Used technologies**:
 Newton interpolation,hash-functions,multidimensional arrays on pointers,system search regularities,system of values
 
+**In-out devices**:
+Mic,WebCam (in future),screens from desktop,images,video (if add OpenCV),keyboard && mouse,Web-server and filesystem
+
 **Run in Ubuntu**:
 Run GUI - `firefox ./julia-html-gui/index.html`
 Run Juliakernel - `./juliakernel/build/ai.run`
