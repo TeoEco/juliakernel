@@ -17,7 +17,7 @@ using namespace std;
 ///Подключаемые функции программы "Юля"
 #include "functions.cpp"
 
-std::mutex g_lock2; 
+//std::mutex g_lock; 
 
 void bye (void)
 {
@@ -40,20 +40,7 @@ int main(int argc, char *argv[])
  	std::thread sound_thread(WorkWithSound,"Hello",std::ref(input_audio),std::ref(output_audio));
  	sound_thread.detach();
 	int fori=0;	
-/*
-	for(;;)
-	{
- 	    
-	    //std::ofstream myfile;
-	    //myfile.open ("debug2.txt");//std::ios::app
-	    //myfile << input_audio << std::endl;
-	    //myfile.close();
-	    //std::cout<<input_audio<<std::endl;
-	//std::cout<<1;
-	//strncpy(output_audio,input_audio,freq);
-	fori++;
-	}
-*/
+
 //Sound init end
 
 
@@ -64,7 +51,7 @@ int main(int argc, char *argv[])
     //Default Values PATH = ~/ and PORT=10000
     char PORT[6];
     ROOT = getenv("PWD");
-    strcpy(PORT,"55565");
+    strcpy(PORT,"55568");
     strcpy(ROOT,"/home/");
     int slot=0;
     printf("Server started at port no. %s%s%s with root directory as %s%s%s\n","\033[92m",PORT,"\033[0m","\033[92m",ROOT,"\033[0m");
@@ -165,7 +152,7 @@ int main(int argc, char *argv[])
 		//Конвертация итеррации цикла из типа числа в тип строка 
 		s=convert::to_string(i);
 	//Вывод скришота обрабатываемого
-	html="<font color='blue'>Кадр №"+s+"</font><br>";
+	html="<font color='blue'><small>Кадр "+s+"</font></small><br>";
 	html+="<img width='100' height='100' src='../juliakernel/output/"+s+".png'><br>";
 	html+="Шаблоны<small>("+convert::to_string(limit)+")</small>";
 		//2)3)Снятие скриншота с игры. Внутри функции можно и сохранять и не сохранять в файл скриншот 
@@ -283,20 +270,22 @@ int main(int argc, char *argv[])
 	//ti = clock() - ti;
         //printf("Time: %f \n", (double)ti/CLOCKS_PER_SEC);
 	//Server start
-	/*
+	
+	//queue
+	//queue not working
+	
  	addrlen = sizeof(clientaddr);
         clients[slot] = accept (listenfd, (struct sockaddr *) &clientaddr, &addrlen);
-        if (clients[slot]<0)
-            perror ("accept() error");
+        if (clients[slot]<0)perror ("accept() error");
         else
         {
-            if ( fork()==0 )
-            {
+            //if ( fork()==0 )
+            //{
                 respond(slot,html);
-            }
+            //}
         }
         while (clients[slot]!=-1) slot = (slot+1)%CONNMAX;
-	*/
+	
 	for (int i2=0; i2<CONNMAX; i2++)
 	{
         //shutdown(clients[i2],SHUT_RDWR);         //All further send and recieve operations are DISABLED...

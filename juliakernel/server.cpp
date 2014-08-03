@@ -1,3 +1,7 @@
+/*Algorythm
+1)One client or one IP 
+
+*/
 #define CONNMAX 1000
 #define BYTES 1024
 
@@ -50,29 +54,39 @@ void respond(int n,std::string html_out)
 {
     char mesg[99999], *reqline[3], data_to_send[BYTES], path[99999];
     int rcvd, fd, bytes_read;
+    //Fill zero
     memset((void*)mesg, (int)'\0', 99999 );
+    //Read from socket
     rcvd=recv(clients[n], mesg, 99999, 0);
+    //Reciece error
     if (rcvd<0)    // receive error
         fprintf(stderr,("recv() error\n"));
     else if (rcvd==0)    // receive socket closed
         fprintf(stderr,"Client disconnected upexpectedly.\n");
     else    // message received
     {
+	//Print http query in console
         printf("%s", mesg);
+	//Parse http-query header .Analog split in PHP
         reqline[0] = strtok (mesg, " \t\n");
-        if ( strncmp(reqline[0], "GET\0", 4)==0 )
+	//If is GET query
+        if (strncmp(reqline[0], "GET\0", 4)==0 )
         {
             reqline[1] = strtok (NULL, " \t");
             reqline[2] = strtok (NULL, " \t\n");
+
             if ( strncmp( reqline[2], "HTTP/1.0", 8)!=0 && strncmp( reqline[2], "HTTP/1.1", 8)!=0 )
             {
                 write(clients[n], "HTTP/1.0 400 Bad Request\n", 25);
             }
             else
             {
+		//Сравнение первых двух символов 
                 if (strncmp(reqline[1], "/\0", 2)==0)
                 reqline[1] = "/index.html"; 
-                strcpy(path, ROOT);
+        	//PATH=ROOT        
+		strcpy(path, ROOT);
+		//path+=/index.html | reqline [1]
                 strcpy(&path[strlen(ROOT)], reqline[1]);
 		std::string res; 
 		//string str(html_out);

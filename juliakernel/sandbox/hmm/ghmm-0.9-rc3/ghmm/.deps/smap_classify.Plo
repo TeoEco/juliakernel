@@ -1,0 +1,10 @@
+smap_classify.lo: smap_classify.c /usr/include/stdc-predef.h \
+ /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h ghmmconfig.h
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/bits/predefs.h:
+
+../config.h:
+
+ghmmconfig.h:
