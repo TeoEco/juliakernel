@@ -32,17 +32,13 @@ void bye (void)
 int main(int argc, char *argv[])
 {
 //Sound init begin
-
-	int  play_buf_size = 44000;
-	const unsigned int freq=44000;
-	ALshort *input_audio[freq];
-	ALshort *output_audio[freq];
- 	std::thread sound_thread(WorkWithSound,"Hello",std::ref(input_audio),std::ref(output_audio));
+	int  play_buf_size = 44100;
+	const unsigned int frequ=44100;
+	ALshort *input_audio[frequ];
+	ALshort *output_audio[frequ];
+ 	std::thread sound_thread(WorkWithSound,std::ref(input_audio),std::ref(output_audio));
  	sound_thread.detach();
-	int fori=0;	
-
 //Sound init end
-
 
 //Server init begin
     struct sockaddr_in clientaddr;
@@ -51,12 +47,12 @@ int main(int argc, char *argv[])
     //Default Values PATH = ~/ and PORT=10000
     char PORT[6];
     ROOT = getenv("PWD");
-    strcpy(PORT,"55568");
+    strcpy(PORT,"55571");
     strcpy(ROOT,"/home/");
     int slot=0;
     printf("Server started at port no. %s%s%s with root directory as %s%s%s\n","\033[92m",PORT,"\033[0m","\033[92m",ROOT,"\033[0m");
     // Setting all elements to -1: signifies there is no client connected
-    for (int i2=0; i2<CONNMAX; i2++)
+    for (int i2=0; i2<CONNMAX; ++i2)
         clients[i2]=-1;
     startServer(PORT);
 //Server init end
@@ -144,7 +140,8 @@ int main(int argc, char *argv[])
 	//5)Передача картинки программе
 	//6)Вывод structurs
 		//Work with sound
-		for(int copy=0; copy<play_buf_size; copy++) output_audio[copy] = input_audio[copy];
+		for(int copy=0; copy<play_buf_size; ++copy) output_audio[copy] = input_audio[copy];
+
 		//0)Команда ОС -Активация окна с игрой
  		exec("wmctrl -a '"+windowname+"'");
 		//1)Совершение выбранного переменной act действия в течении времени time
@@ -184,9 +181,9 @@ int main(int argc, char *argv[])
 					for (int y2=0;y2<nheight;++y2) {
 					 //От шумов
 					 if(
-					 abs(pixels_image[x1][y1][0]-pixels_image[x2][y2][0])<3 and 
-					 abs(pixels_image[x1][y1][1]-pixels_image[x2][y2][1])<3 and 
-					 abs(pixels_image[x1][y1][2]-pixels_image[x2][y2][2])<3
+					 abs(pixels_image[x1][y1][0]-pixels_image[x2][y2][0])==0 and 
+					 abs(pixels_image[x1][y1][1]-pixels_image[x2][y2][1])==0 and 
+					 abs(pixels_image[x1][y1][2]-pixels_image[x2][y2][2])==0
 					 )
 					 {
 					 int r=pixels_image[x1][y1][0];
@@ -246,9 +243,10 @@ int main(int argc, char *argv[])
 
 				//printf("y(x)=%lf*x^3+%lf*x^2+%lf*x\n",coeff[2],coeff[1],coeff[0]);
 				//Вывод изображений шаблонов и информации о них 
+				string number_image=render_square_image(temp_patterns,iterration);
 				if(limit_i<=limit)
 				{
-				string number_image=render_square_image(temp_patterns,iterration);
+
 				html+="<div><img src='../juliakernel/output/images/"+number_image+".bmp' width='100' height='100'></div>";
 				html+="<small>Функция движения<br>";
 				if(round(coeff[2])!=0)html+=convert::to_string(round(coeff[2]))+"*x<sup><small>2</small></sup>";
@@ -268,30 +266,18 @@ int main(int argc, char *argv[])
 			}
     		}
 	//ti = clock() - ti;
+
         //printf("Time: %f \n", (double)ti/CLOCKS_PER_SEC);
+
 	//Server start
-	
-	//queue
-	//queue not working
-	
  	addrlen = sizeof(clientaddr);
         clients[slot] = accept (listenfd, (struct sockaddr *) &clientaddr, &addrlen);
         if (clients[slot]<0)perror ("accept() error");
         else
         {
-            //if ( fork()==0 )
-            //{
                 respond(slot,html);
-            //}
         }
         while (clients[slot]!=-1) slot = (slot+1)%CONNMAX;
-	
-	for (int i2=0; i2<CONNMAX; i2++)
-	{
-        //shutdown(clients[i2],SHUT_RDWR);         //All further send and recieve operations are DISABLED...
-        //close(clients[i2]);
-        //clients[i2]=-1;
-	}	
 	//Server end
 	
 	}

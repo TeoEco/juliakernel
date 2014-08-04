@@ -1,5 +1,3 @@
-
-
 const int BUF_COUNT = 5;
 
 class SoundManager {
@@ -16,8 +14,8 @@ class SoundManager {
 public:
     SoundManager() {
         error = 0;
-        read_buf_size = 44000;
-        play_buf_size = 44000;
+        read_buf_size = 44100;
+        play_buf_size = 44100;
         play_buf[0] = 0;
 
         // Инициализируем OpenAL и создаем всякие штучки
@@ -60,15 +58,15 @@ public:
 
         alcGetIntegerv(in_device, ALC_CAPTURE_SAMPLES, sizeof(samples), &samples);
         if( (error=  alcGetError(in_device)) != AL_NO_ERROR)
-            //std::cout<<error<<" alcGetIntegerv "<<__LINE__<<"\n";
+            std::cout<<error<<" alcGetIntegerv "<<__LINE__<<"\n";
         alGetSourcei (al_source, AL_BUFFERS_PROCESSED , &val);
 	
         while ( ( (val--) > 0) && (samples < play_buf_size)   ) {
+	
             ALuint buffer;
 	    //Write sound
             alcCaptureSamples(in_device, play_buf, samples);
 	    //-Write sound
-
 	    //Connect with main thread
 	    for(int copy=0; copy<play_buf_size; copy++) input_audio[copy] = play_buf[copy];
 	    for(int copy=0; copy<play_buf_size; copy++) play_buf[copy] = output_audio[copy];
@@ -93,12 +91,12 @@ public:
 };
 
 
-void WorkWithSound(std::string msg,ALshort **input_audio,ALshort **output_audio)
+void WorkWithSound(ALshort **input_audio,ALshort **output_audio)
 {
     SoundManager s;
+	std::cout<<1;
     while (1) {
         s.input(input_audio,output_audio);
 	//s.output();
     }
 }
-

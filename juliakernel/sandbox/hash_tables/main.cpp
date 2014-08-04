@@ -18,6 +18,10 @@ public:
 	unsigned int z2; 
 };
 
+struct HashTable
+{
+	
+};
 using namespace std;
 int main()
 {

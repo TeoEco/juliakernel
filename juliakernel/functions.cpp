@@ -391,16 +391,13 @@ std::string render_square_image(int** temp_patterns,int iter)
     {
  	// temp_patterns[i]
 	
-	
         image.set_pixel(
-	(unsigned int)temp_patterns[i][3],
-	(unsigned int)temp_patterns[i][4],
+	(unsigned int)(9-temp_patterns[i][4]),
+	(unsigned int)(9-temp_patterns[i][3]),
 	(unsigned char)temp_patterns[i][0],
 	(unsigned char)temp_patterns[i][1],
 	(unsigned char)temp_patterns[i][2]
 	);
-	
-	
 	
     }
 
@@ -461,66 +458,5 @@ void savelog(std::string output)
 	  myfile << output << std::endl;
 	  myfile.close();
 }
-//Показывать в форме сгенерированые "видео"
-void show_video()
-{
-}
-
-void output()
-{
-//Вывод информации 
-string html1;
-html1+="<link rel='stylesheet' type='text/css' href='style.css'>";
-
-html1+="<tag style='display:block;'>";
-html1+="<div class='tag1'></div>";
-html1+="<div class='tag2'>";
-html1+="	<div class='info'>";
-html1+="	<b>Способ поиска динамический</b><br>";
-html1+="	Время поиска:<!--.round($time[0],5). сек--><br>";
-html1+="	Количество переработонных зак.:.$sch[0] .<br>";
-html1+="	Количество кадров:5<br>";
-html1+="	Лимит на количество кадров:.$glubina1.<br>";
-html1+="	Лимит на количество фрагментов:5<br>";
-html1+="	<br>";
-html1+="	<b>Способ поиска статический</b><br>";
-html1+="	Время поиска:<!--.round($time[1],5). сек--> <br>";
-html1+="	Количество переработонных зак.:.$sch[1] .<br>";
-html1+="	Количество кадров:5<br>";
-html1+="	Лимит на количество кадров:.$glubina1.<br>";
-html1+="	Лимит на количество фрагментов:5<br>";
-html1+="	</div>";
-html1+="</div>";
-html1+="</tag>";
-
-//Вывод информации о теоремах и логике
-html1+="<tag style='display:block;'>";
-html1+="<div class='tag3'>";
-html1+="</div>";
-html1+="<div class='tag4'>";
-html1+="	<div class='info'>";
-html1+="	<b>";
-html1+="	Исследование закономерностей<br>";
-html1+="	Логика<br>";
-html1+="	Аксиомы<br>";
-html1+="	Теоремы<br>";
-html1+="	Рекурсия причин и следствий<br>";
-html1+="	</b>";
-html1+="	</div>";
-html1+="</div>";
-html1+="</tag>";
 
 
-html1+="<tag>";
-html1+="<div class='tag5'>";
-html1+="</div>";
-html1+="<div class='tag6'>";
-html1+="	<div class='info'>";
-html1+="	Задачи <br>";
-html1+="	Система ценностей<br>";
-html1+="	Решение задач<br>";
-html1+="	Выбор из вариантов<br>";
-html1+="	</div>";
-html1+="</div>";
-html1+="</tag>";
-}
