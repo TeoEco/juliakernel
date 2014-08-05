@@ -303,21 +303,26 @@ int action(int a,float time)
 	    act="Ничего не делаю в течении "+times+" сек.";
             break;
          case 1:
-            cmd= "xdotool keydown Left";
-            cmd2="xdotool keyup Left";
-	    act="Двигаюсь влево в течении "+times+" сек.";
-            break;
-         case 2:
-      	    cmd= "xdotool keydown f+Left";//Прыжок
-	    cmd2= "xdotool keyup f+Left";
-            act="Прыгаю в течении "+times+" сек.";
-	    break;
-         case 3:
       	    cmd= "xdotool keydown Right";
 	    cmd2= "xdotool keyup Right";
             act="Двигаюсь вправо в течении "+times+" сек.";
 	    break;
+         case 2:
+      	    cmd= "xdotool keydown f+Right";//Прыжок
+	    cmd2= "xdotool keyup f+Right";
+            act="Прыгаю влево в течении "+times+" сек.";
+	    break;
+         case 3:
+      	    cmd= "xdotool keydown f+Left";//Прыжок
+	    cmd2= "xdotool keyup f+Left";
+            act="Прыгаю вправо в течении "+times+" сек.";
+	    break;
          case 4:
+            cmd= "xdotool keydown Left";
+            cmd2="xdotool keyup Left";
+	    act="Двигаюсь влево в течении "+times+" сек.";
+            break;
+         case 5:
       	    cmd= "xdotool keydown Return;";
       	    cmd2="xdotool keyup Return;";
 	    act="Нажимаю Enter  в течении "+times+" сек.";

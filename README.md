@@ -13,7 +13,7 @@
 **Compile**:
 `cd juliakernel/ && make`
 
-**Used Libs**:
+**Used Kernel Libs**:
 OpenMP
 C++ 11 Threads
 g++
@@ -22,6 +22,12 @@ Make
 Cairo
 GSL
 Prettyprint
+
+**Used UI Libs**:
+HTML5
+Jquery
+Javascript
+QT
 
 **Used technologies**:
 Newton interpolation,hash-functions,multidimensional arrays on pointers,system search regularities,system of values

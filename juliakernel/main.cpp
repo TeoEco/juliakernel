@@ -2,7 +2,13 @@
 * Artificial Intelligence
 * http://juliabot.com/julia/ 
 */
-
+/*
+ Что делать
+1)Надо сделать Ньютоновую интерполяцию на тестовых bmp чтобы было будущее отображение 
+2)Надо отвязать объекты от фона и от одного цвета
+Если делать нечего будет ,можно сделать Кьют   
+Если использовать кубики
+*/
 //Script create copyies app
 //Script response for all
 ///List including libraries
@@ -41,7 +47,7 @@ int main(int argc, char *argv[])
 //Sound init end
 
 //Server init begin
-    struct sockaddr_in clientaddr;
+    struct socЙЕkaddr_in clientaddr;
     socklen_t addrlen;
     char c;
     //Default Values PATH = ~/ and PORT=10000
@@ -84,7 +90,7 @@ int main(int argc, char *argv[])
 	int act=2;
 	map <int,string> act_mas;
 	//Время нажатия клавиш
-	float time=0.1;
+	float time_action=0.1;
  
 	map< string, map< int, map< int, int  >  > >  structurs;
 	//Временный массив для сохранения шаблонов
@@ -123,7 +129,7 @@ int main(int argc, char *argv[])
 	//Ждать 3 секунды
 	sleeping(3);
 	//Команда ОС - Нажатие Enter
-	action(4,time);
+	action(5,time_action);
 	//Ждать 3 секунды
 	sleeping(4);
 
@@ -144,8 +150,10 @@ int main(int argc, char *argv[])
 
 		//0)Команда ОС -Активация окна с игрой
  		exec("wmctrl -a '"+windowname+"'");
+		act=rand() % 3;   
+		int time_duration=rand() % 5;   
 		//1)Совершение выбранного переменной act действия в течении времени time
-		action(act,time);
+		action(act,time_action*time_duration);
 		//Конвертация итеррации цикла из типа числа в тип строка 
 		s=convert::to_string(i);
 	//Вывод скришота обрабатываемого
