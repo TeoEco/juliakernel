@@ -17,6 +17,10 @@ const int nwidth=10;
 //Массив с пикселями картинки
 int pixels_image[nwidth][nheight][3];
 
+
+//Array with future pixels for array
+int future_pixels_image[nwidth][nheight][3];
+
 //Таймер для программиста - для имерения времени выполнения участка кода
 clock_t  ti;
 
@@ -29,6 +33,13 @@ clock_t  ti;
 #define DEGREE 3
 
 double coeff[DEGREE];
+double coeff2[DEGREE];
+double coeff3[DEGREE];
+
+double coeff_f[DEGREE];
+double coeff2_f[DEGREE];
+double coeff3_f[DEGREE];
+
 
 int iterration=0;
 //Счетчик выводимых изобржений
@@ -38,10 +49,11 @@ int count_images=0;
 struct pattern
 {
 public:
-	char pattern[50];
+	char pattern[100];
 	unsigned int i; 
 	unsigned int x; 
 	unsigned int y; 
+	unsigned int d1; 
 };
 
 #define RESET   "\033[0m"

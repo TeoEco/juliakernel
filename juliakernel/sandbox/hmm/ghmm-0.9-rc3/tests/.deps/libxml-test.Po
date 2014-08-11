@@ -1,6 +1,5 @@
-libxml-test.o: libxml-test.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h ../ghmm/ghmm.h \
- ../ghmm/ghmmconfig.h ../ghmm/xmlreader.h ../ghmm/model.h \
+libxml-test.o: libxml-test.c /usr/include/stdc-predef.h ../config.h \
+ ../ghmm/ghmm.h ../ghmm/ghmmconfig.h ../ghmm/xmlreader.h ../ghmm/model.h \
  /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -20,8 +19,6 @@ libxml-test.o: libxml-test.c /usr/include/stdc-predef.h \
  ../ghmm/xmlreader.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 

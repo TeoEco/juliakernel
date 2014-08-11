@@ -1,7 +1,6 @@
 two_states_three_symbols.o: two_states_three_symbols.c \
- /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
- ../config.h /usr/include/stdio.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/stdc-predef.h ../config.h /usr/include/stdio.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
@@ -19,8 +18,6 @@ two_states_three_symbols.o: two_states_three_symbols.c \
  ../ghmm/reestimate.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 

@@ -1,5 +1,4 @@
-pviterbi.lo: pviterbi.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+pviterbi.lo: pviterbi.c /usr/include/stdc-predef.h ../config.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.8/include/float.h /usr/include/math.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -29,6 +28,7 @@ pviterbi.lo: pviterbi.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ghmm.h ghmmconfig.h \
  mprintf.h /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h mes.h \
@@ -45,8 +45,6 @@ pviterbi.lo: pviterbi.c /usr/include/stdc-predef.h \
  psequence.h pviterbi.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -121,6 +119,8 @@ pviterbi.lo: pviterbi.c /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

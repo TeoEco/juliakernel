@@ -1008,6 +1008,7 @@ void main()
         }
 
         cout << endl << endl;
+//printf("y(x)=%lf*x^3+%lf*x^2+%lf*x\n",coeff[2],coeff[1],coeff[0]);
     }
 
     //  Deallocate 3D array

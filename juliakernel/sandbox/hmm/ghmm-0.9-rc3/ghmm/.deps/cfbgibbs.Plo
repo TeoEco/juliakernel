@@ -1,5 +1,4 @@
-cfbgibbs.lo: cfbgibbs.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h cfbgibbs.h model.h \
+cfbgibbs.lo: cfbgibbs.c /usr/include/stdc-predef.h cfbgibbs.h model.h \
  /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -28,6 +27,7 @@ cfbgibbs.lo: cfbgibbs.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ghmm_internals.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
@@ -44,8 +44,6 @@ cfbgibbs.lo: cfbgibbs.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathinline.h fbgibbs.h ../config.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 cfbgibbs.h:
 
@@ -132,6 +130,8 @@ mes.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

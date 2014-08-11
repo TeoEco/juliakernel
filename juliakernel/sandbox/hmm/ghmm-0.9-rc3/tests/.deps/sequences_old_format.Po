@@ -1,6 +1,5 @@
 sequences_old_format.o: sequences_old_format.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
- /usr/include/stdio.h /usr/include/features.h \
+ ../config.h /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -18,8 +17,6 @@ sequences_old_format.o: sequences_old_format.c /usr/include/stdc-predef.h \
  ../ghmm/scanner.h ../ghmm/smodel.h ../ghmm/obsolete.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 

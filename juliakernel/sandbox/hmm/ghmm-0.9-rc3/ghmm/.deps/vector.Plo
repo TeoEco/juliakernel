@@ -1,5 +1,4 @@
-vector.lo: vector.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+vector.lo: vector.c /usr/include/stdc-predef.h ../config.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.8/include/float.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -35,6 +34,7 @@ vector.lo: vector.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ghmm_internals.h model.h \
  ghmm.h sequence.h smodel.h scanner.h /usr/include/unistd.h \
@@ -45,8 +45,6 @@ vector.lo: vector.c /usr/include/stdc-predef.h \
  obsolete.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -141,6 +139,8 @@ mes.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

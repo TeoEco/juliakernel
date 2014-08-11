@@ -1,3 +1,6 @@
+
+
+
 ///Ньютонова интерполяция - функция
 bool polynomialfit(int obs, int degree, double *dx, double *dy, double *store) /* n, p */
 {
@@ -5,9 +8,7 @@ bool polynomialfit(int obs, int degree, double *dx, double *dy, double *store) /
   gsl_matrix *cov, *X;
   gsl_vector *y, *c;
   double chisq;
- 
   int i, j;
- 
   X = gsl_matrix_alloc(obs, degree);
   y = gsl_vector_alloc(obs);
   c = gsl_vector_alloc(degree);
@@ -60,18 +61,18 @@ void sleeping(float seconds)
 
 ///Выполнение команды операционной системы от имени программы с сохранением результата
 std::string exec(std::string cmd) {
-	FILE* pipe = popen(cmd.c_str(), "r");
-	if (!pipe) return "ERROR";
-	char buffer[128];
-	std::string result = "";
-	/*
-	while(!feof(pipe)) {
-		if(fgets(buffer, 128, pipe) != NULL)
-		result += buffer;
-	}
-	pclose(pipe);
-	*/
-	return result;
+FILE* pipe = popen(cmd.c_str(), "r");
+if (!pipe) return "ERROR";
+char buffer[128];
+std::string result = "";
+/*
+while(!feof(pipe)) {
+if(fgets(buffer, 128, pipe) != NULL)
+result += buffer;
+}
+pclose(pipe);
+*/
+return result;
 }
 
 ///Перебор множеств подмножества
@@ -287,6 +288,7 @@ void get_screen (string filenom)
 
 
 ///Действия
+
 int action(int a,float time)
 {
 	//Передаем массив нажимаемых кнопок
@@ -295,6 +297,7 @@ int action(int a,float time)
  	FILE *ptr;
 	exec("wmctrl -a 'FCEUX 2.2.1'");
         times=convert::to_string(time);
+
      switch (a)
       {
          case 0:
@@ -327,22 +330,17 @@ int action(int a,float time)
       	    cmd2="xdotool keyup Return;";
 	    act="Нажимаю Enter  в течении "+times+" сек.";
  	    break;
-
       }
+	
 	act=act+"\n";
  	printf(act.c_str());
 
-	//Ввод команды в консоль
+	//Input command in command line
 	ptr = popen(cmd.c_str(), "r");
-	//Вывод информации из консоли
-	char buff[512];
-  	 while(fgets(buff, sizeof(buff), ptr)!=NULL){
-	        printf("%s", buff);
-	}
+	pclose(ptr);
 	sleeping(time);
 	ptr = popen(cmd2.c_str(), "r");
-
-
+	pclose(ptr);
 	return 0;
 }
 
@@ -377,7 +375,7 @@ std::string render_square(int array_pointer[10][10][3])
 return output;
 }
 
-std::string render_square_image(int** temp_patterns,int iter)
+std::string render_square_image(int** temp_patterns,int iter,std::string filename_pattern)
 {
    const unsigned int dim = 10;
 
@@ -407,9 +405,30 @@ std::string render_square_image(int** temp_patterns,int iter)
     }
 
 	std::string fn=convert::to_string(count_images);
-        image.save_image("output/images/"+fn+".bmp");
-count_images++;
-return fn;
+        image.save_image("output/images/"+filename_pattern+fn+".bmp");
+	count_images++;
+	return fn;
+}
+
+std::string render_square_image2(int temp_patterns[10][10][3],std::string filename_pattern)
+{
+   const unsigned int dim = 10;
+   bitmap_image image(dim,dim);
+   for (unsigned int x = 0; x < dim; ++x)
+   {
+      for (unsigned int y = 0; y < dim; ++y)
+      {
+         image.set_pixel(x,y,
+	(unsigned char)temp_patterns[x][y][0],
+	(unsigned char)temp_patterns[x][y][1],
+	(unsigned char)temp_patterns[x][y][2]
+	);
+      }
+   }
+	std::string fn=convert::to_string(count_images);
+        image.save_image("output/images/"+filename_pattern+fn+".bmp");
+	count_images++;
+	return fn;
 }
 
 ///Загрузка bmp-изображения в массив
@@ -464,4 +483,10 @@ void savelog(std::string output)
 	  myfile.close();
 }
 
+//Exit function
+void bye (void)
+{
+ printf("\nGoodbye, cruel world....\n%s",RESET);
+ exec("killall fceux");
+}
 

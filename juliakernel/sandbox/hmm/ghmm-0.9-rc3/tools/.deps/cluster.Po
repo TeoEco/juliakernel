@@ -1,5 +1,4 @@
-cluster.o: cluster.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+cluster.o: cluster.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -27,6 +26,7 @@ cluster.o: cluster.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ../ghmm/ghmm_internals.h \
  ../ghmm/model.h ../ghmm/ghmm.h ../ghmm/ghmmconfig.h ../ghmm/sequence.h \
@@ -38,8 +38,6 @@ cluster.o: cluster.c /usr/include/stdc-predef.h \
  ../ghmm/cluster.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -112,6 +110,8 @@ cluster.o: cluster.c /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

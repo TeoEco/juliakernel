@@ -1,4 +1,4 @@
-#Makefile for artifical intelligence project
+#Makefile for artifical intelligence project -w 
 CXXFLAGS +=  -std=c++11 -pg -m64 -pipe -O3  -Wall -W -D_REENTRANT -I./ext_libraries/gsl/multifit/ -L/usr/X11/lib -L/usr/local/lib  -fopenmp -g -ggdb  -lX11 -lm 
 CXXFLAGS +=  -Wl,--no-as-needed -pthread
 CXXFLAGS +=  -lopenal

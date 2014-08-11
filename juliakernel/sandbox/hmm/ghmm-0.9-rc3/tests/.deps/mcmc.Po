@@ -1,5 +1,4 @@
-mcmc.o: mcmc.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+mcmc.o: mcmc.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -27,6 +26,7 @@ mcmc.o: mcmc.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ../ghmm/matrix.h \
  ../ghmm/scanner.h ../ghmm/ghmmconfig.h ../ghmm/rng.h ../ghmm/sequence.h \
@@ -35,8 +35,6 @@ mcmc.o: mcmc.c /usr/include/stdc-predef.h \
  ../ghmm/obsolete.h /usr/include/xlocale.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -107,6 +105,8 @@ mcmc.o: mcmc.c /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

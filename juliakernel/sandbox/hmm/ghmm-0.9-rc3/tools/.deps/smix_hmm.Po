@@ -1,5 +1,4 @@
-smix_hmm.o: smix_hmm.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+smix_hmm.o: smix_hmm.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -27,6 +26,7 @@ smix_hmm.o: smix_hmm.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ../ghmm/mes.h \
  ../ghmm/ghmm_internals.h ../ghmm/model.h ../ghmm/ghmm.h \
@@ -40,8 +40,6 @@ smix_hmm.o: smix_hmm.c /usr/include/stdc-predef.h \
  ../ghmm/matrix.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -112,6 +110,8 @@ smix_hmm.o: smix_hmm.c /usr/include/stdc-predef.h \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

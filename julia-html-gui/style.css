@@ -1,3 +1,7 @@
+*
+{
+font-family: 'Jura', sans-serif;
+}
 .frames
 {
 width:80%;
@@ -19,7 +23,7 @@ font-size:11px;
 
 .devices
 {
-background-color:rgba(0,255,0,0.4);
+background-color:rgba(255,0,0,0.4);
 color:white;
 border-radius:5px;
 
@@ -42,7 +46,7 @@ width:16%;
 position:fixed;
 right:10px;
 bottom:40px;
-background-color:rgba(0,255,0,0.4);
+background-color:rgba(255,0,0,0.4);
 border-radius:5px;
 padding:5px;
 }

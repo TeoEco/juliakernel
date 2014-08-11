@@ -1,5 +1,4 @@
-sequence.lo: sequence.c /usr/include/stdc-predef.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h ../config.h \
+sequence.lo: sequence.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/math.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -45,14 +44,13 @@ sequence.lo: sequence.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h ghmm.h ghmmconfig.h \
  mprintf.h mes.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ghmm_internals.h model.h \
  sequence.h smodel.h scanner.h matrix.h vector.h foba.h sfoba.h rng.h \
  obsolete.h
 
 /usr/include/stdc-predef.h:
-
-/usr/include/x86_64-linux-gnu/bits/predefs.h:
 
 ../config.h:
 
@@ -177,6 +175,8 @@ mes.h:
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 

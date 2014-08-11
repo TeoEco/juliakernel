@@ -1,16 +1,9 @@
 /*
-* Artificial Intelligence
+* Artificial Intelligence v 1.1
 * http://juliabot.com/julia/ 
+* https://github.com/ruslancheb/juliakernel/ 
+* Apache license
 */
-/*
- Что делать
-1)Надо сделать Ньютоновую интерполяцию на тестовых bmp чтобы было будущее отображение 
-2)Надо отвязать объекты от фона и от одного цвета
-Если делать нечего будет ,можно сделать Кьют   
-Если использовать кубики
-*/
-//Script create copyies app
-//Script response for all
 ///List including libraries
 #include "libs.h"
 using namespace std;
@@ -20,21 +13,12 @@ using namespace std;
 #include "server.cpp"
 //Functions for working with audio-stream
 #include "sound.cpp"
-///Подключаемые функции программы "Юля"
+///Local functions  program "Julia"
 #include "functions.cpp"
 
 //std::mutex g_lock; 
 
-void bye (void)
-{
- printf("\nGoodbye, cruel world....\n%s",RESET);
- exec("killall fceux");
-}
-
-
- 
-
-///Точка входа в программу - начальная функция
+///Entry point
 int main(int argc, char *argv[])
 {
 //Sound init begin
@@ -47,7 +31,8 @@ int main(int argc, char *argv[])
 //Sound init end
 
 //Server init begin
-    struct socЙЕkaddr_in clientaddr;
+
+    struct sockaddr_in clientaddr;
     socklen_t addrlen;
     char c;
     //Default Values PATH = ~/ and PORT=10000
@@ -61,17 +46,17 @@ int main(int argc, char *argv[])
     for (int i2=0; i2<CONNMAX; ++i2)
         clients[i2]=-1;
     startServer(PORT);
+
 //Server init end
 
-    
+	int mode=1;
+	std::string mode_ext;
 	std::string html,html_output;
 	//Get current directory
 	char cwd[1024];
         getcwd(cwd, sizeof(cwd));
 	string current_dir(cwd);
-
-
-	//Задание функции выполнющейся при выходе
+	//Exit function
 	atexit (bye);
 	//Вывод информационно-инициализирующих строк
 	printf("%sИскуственный Интеллект\n%s",RED,RESET);
@@ -98,26 +83,34 @@ int main(int argc, char *argv[])
 	for(int ib = 0; ib <100000; ++ib)temp_patterns[ib] = new int[10];
 	//Массив со структурами и менеджер памяти для этого массива
 	std::tr1::hash<std::string> hash_fn;
-	int size=(info.freeram-(400*1024*1024))/(int)sizeof(pattern);
-	if(size<0)
+	int pattern_array_size=(info.freeram-(700*1024*1024))/((int)sizeof(pattern)*100)-2000;
+	if(pattern_array_size<10)
 	{
-		std::cout<<"Недостачно свободной оперативной памяти для работы программы (size="<<size<<")" << endl;
+		std::cout<<"Недостачно свободной оперативной памяти для работы программы (size="<<pattern_array_size<<")" << endl;
 		exit(0);
 	}
 	else
 	{
-		std::cout<<"Будет выделена память для "<<size<<" шаблонов" << endl;
+		std::cout<<"Будет выделена память для "<<pattern_array_size<<" шаблонов" << endl;
 	}
-	
-	pattern *patterns=new pattern[size];
-	for(int i=0;i<size;i++)
+
+	//2D array for object pattern
+	pattern ** patterns=new pattern * [pattern_array_size];
+
+	for(int iz=0;iz<pattern_array_size;iz++)
 	{
-	patterns->i=0;
-	patterns->x=0;
-	patterns->y=0;
+	patterns[iz]=new pattern[10];
+		for(int ji=0;ji<10;ji++)
+		{
+			patterns[iz][ji].i=0;
+			patterns[iz][ji].x=0;
+			patterns[iz][ji].y=0;
+			patterns[iz][ji].d1=0;
+		}
 	}
 	
-	//printf("%sПривет.Меня зовут Юля\n", GREEN);
+	printf("%sПривет.Меня зовут Юля\n%s",GREEN,RESET);
+
 	//Команда ОС - Закрыть другие окна с игрой
 	exec("killall fceux");
 	//Ждать одну секунду
@@ -132,47 +125,55 @@ int main(int argc, char *argv[])
 	action(5,time_action);
 	//Ждать 3 секунды
 	sleeping(4);
-
-
-
 	//Main loop
-	for(int i=1;i<=100;++i)
+	
+	for(int i=1;i<=99;++i)
 	{
-	//Структура цикла 
-	//0)Активция окна
-	//1)Любое действие или бездействие
-	//2)Снятие скриншота с окна
-	//4)Уменьшение картинки до 20 * 20 - сохранение
-	//5)Передача картинки программе
-	//6)Вывод structurs
+	
 		//Work with sound
 		for(int copy=0; copy<play_buf_size; ++copy) output_audio[copy] = input_audio[copy];
-
-		//0)Команда ОС -Активация окна с игрой
+		//Os command line command - Ativation window with game
  		exec("wmctrl -a '"+windowname+"'");
 		act=rand() % 3;   
 		int time_duration=rand() % 5;   
-		//1)Совершение выбранного переменной act действия в течении времени time
+		//Совершение выбранного переменной act действия в течении времени time
 		action(act,time_action*time_duration);
-		//Конвертация итеррации цикла из типа числа в тип строка 
+		//Convert i to string
 		s=convert::to_string(i);
-	//Вывод скришота обрабатываемого
-	html="<font color='blue'><small>Кадр "+s+"</font></small><br>";
-	html+="<img width='100' height='100' src='../juliakernel/output/"+s+".png'><br>";
-	html+="Шаблоны<small>("+convert::to_string(limit)+")</small>";
-		//2)3)Снятие скриншота с игры. Внутри функции можно и сохранять и не сохранять в файл скриншот 
+		//Get image data
+		
+		switch(mode) {
+		case 1:
+			{
+			 mode_ext="png";
+			//Save screen from window game in image and array buffer
+			get_screen(s);
+			}
+		  break;
+		case 2:
+			{
+			 mode_ext="bmp";
+			//Load testing images
+			string bmpname="input/"+s+".bmp";
+			//Load in image buffer - file image
+			loadBMP(bmpname);
+			}
+		  break;
+		default:
+			{
+		  	cout<<"Not set mode"<<endl;
+		  	exit(0);
+			}
+		  break;
+		}
+		
+ 		mode_ext="png";
+		//Save screen from window game in image and array buffer
 		get_screen(s);
-		//Get value sound from audio stream
- 		//get_mic_sound_buff();
-		//Get value sound from os audio stream
-		//get_os_sound_buff();
-		//Play sound from buffer
-		//play_audio_buff();
-		//Загрука тестовых изображений
-		string bmpname=""+s+".bmp";
-		//loadBMP(bmpname);
-		//html+=render_square(pixels_image);
-		//от 100 000 до 4 000 000 итеррации 
+		//Output html code
+		html="<font color='blue'><small>Кадр "+s+"</font></small><br>";
+		html+="<img width='100' height='100' src='../juliakernel/output/"+s+"."+mode_ext+"'><br>";
+		html+="Шаблоны<small>("+convert::to_string(limit)+")</small>";
   		//ti=clock();
 		
 		int limit_i=1;
@@ -184,7 +185,8 @@ int main(int argc, char *argv[])
 				int MINY=0;
 				int MINDX=0;
 				int MINDY=0;
-			       //#pragma omp parallel for
+				//Нахождение структур			       
+				//#pragma omp parallel for
 			       for (int x2=0;x2<nwidth;++x2){
 					for (int y2=0;y2<nheight;++y2) {
 					 //От шумов
@@ -221,7 +223,7 @@ int main(int argc, char *argv[])
 				//Определение относительных координат и запись возможной структуры от левого верхнего угла
 				//Нахождение структур
 				//Найти функции прямых и кривых внутри структур (Ньютонова интерполяция)
-				//Преобразовать в уникальную строку + (возможно md5) map и записать для неё в массив характеристики
+				//Можно добавить и создание ключа в цикл
 				string object="";
 				for(int iter11=0;iter11<iterration;++iter11)
 				{
@@ -230,54 +232,148 @@ int main(int argc, char *argv[])
 
 					temp_patterns[iter11][3]=x11;
 					temp_patterns[iter11][4]=y11;
+
 					object+=convert::to_string(x11);
-					
+					object+=convert::to_string(y11);
 				}
 				int dx=0;int dy=0;int poly_x=0;
 				//Запись новой структуры
 				//Архитектура памяти: Определение коллизий -> Выделение памяти -> Cвязный список для коллизий
-				
-				size_t str_hash = hash_fn(object+convert::to_string(i));
-				int key=(str_hash%size)-1;//Вычисление ключа массива
-				patterns[key].i=i;
-				patterns[key].x=MINX;
-				patterns[key].y=MINY;
-				
-				
-				//Функции смещений структур (Ньютонова интерполяция)
-				double xnewton[] = {0,  1,  2,  3,  4,  5,  6,   7,   8,   9,   10};
-		 		double ynewton[] = {0,  1,  2,  3,  4,  5,  6,   7,   8,   9,   10};
-				polynomialfit(NP, DEGREE, xnewton, ynewton, coeff);
+				//Вычисление функции движения и появления ,на очереди : уменьшения ,увеличения, поворота - комбинации
+				//изменения цвета,3d поворота
 
-				//printf("y(x)=%lf*x^3+%lf*x^2+%lf*x\n",coeff[2],coeff[1],coeff[0]);
-				//Вывод изображений шаблонов и информации о них 
-				string number_image=render_square_image(temp_patterns,iterration);
+				
+				//Работа с масивом
+		
+				size_t str_hash = hash_fn(object+convert::to_string(i));
+				int key=(str_hash%pattern_array_size)-1;//Вычисление ключа массива
+
+				int pattern_size=patterns[key][0].i;
+				patterns[key][0].i++;
+				
+				patterns[key][pattern_size].i=i;
+				patterns[key][pattern_size].x=MINX;
+				patterns[key][pattern_size].y=MINY;
+				memcpy(&patterns[key][pattern_size].pattern,object.c_str(),100);
+				//Конец работы с массивом
+				//Движения по x
+				double xnewton[pattern_size],ynewton[pattern_size];
+				//Движения по y
+				double xnewton2[pattern_size],ynewton2[pattern_size];
+				//Появления и исчезновения
+				double xnewton3[pattern_size],ynewton3[pattern_size];
+				for(int i8=1;i8<pattern_size;i8++)
+				{
+				ynewton[i8]=patterns[key][i8].x;
+				xnewton[i8]=i8;
+
+				ynewton2[i8]=patterns[key][i8].y;
+				xnewton2[i8]=i8;
+
+				ynewton3[i8]=patterns[key][i8].i;
+				xnewton3[i8]=i8;						
+				}
+				//Вычисление функций
+				polynomialfit(NP, DEGREE, xnewton, ynewton, coeff);
+				polynomialfit(NP, DEGREE, xnewton2, ynewton2, coeff2);
+				polynomialfit(NP, DEGREE, xnewton3, ynewton3, coeff3);
+				//Работа с масивом Можно union
+				//Push double values in array
+				memcpy(&patterns[key][0].pattern[0],&coeff[0],sizeof(double));
+				memcpy(&patterns[key][0].pattern[8],&coeff[1],sizeof(double));
+				memcpy(&patterns[key][0].pattern[16],&coeff[2],sizeof(double));
+				memcpy(&patterns[key][0].pattern[24],&coeff2[0],sizeof(double));
+				memcpy(&patterns[key][0].pattern[32],&coeff2[1],sizeof(double));
+				memcpy(&patterns[key][0].pattern[40],&coeff2[2],sizeof(double));
+				memcpy(&patterns[key][0].pattern[48],&coeff3[0],sizeof(double));
+				memcpy(&patterns[key][0].pattern[56],&coeff3[1],sizeof(double));
+				memcpy(&patterns[key][0].pattern[64],&coeff3[2],sizeof(double));
+
+				patterns[key][0].x=pattern_size;
+				patterns[key][0].y=pattern_size;
+				patterns[key][0].d1=pattern_size;
+				//Конец работы с массивом
+				
+
+
+				//Вывод изображений шаблонов и информации о них
+				string number_image=render_square_image(temp_patterns,iterration,"");
 				if(limit_i<=limit)
 				{
-
 				html+="<div><img src='../juliakernel/output/images/"+number_image+".bmp' width='100' height='100'></div>";
-				html+="<small>Функция движения<br>";
+				html+="<small>";
+				html+="Движение по x<br>";
 				if(round(coeff[2])!=0)html+=convert::to_string(round(coeff[2]))+"*x<sup><small>2</small></sup>";
 				if(round(coeff[1])!=0)html+="+"+convert::to_string(round(coeff[1]))+"*x";		
 				if(round(coeff[0])!=0)html+="+"+convert::to_string(round(coeff[0]))+"";
-				int res=coeff[2]*(poly_x^2)+coeff[1]*(poly_x^1)+coeff[0];
+				
 				html+="<br>";
-				html+="Функция наличия<br>";
-				if(round(coeff[2])!=0)html+=convert::to_string(round(coeff[2]))+"*x<sup><small>2</small></sup>";
-				if(round(coeff[1])!=0)html+="+"+convert::to_string(round(coeff[1]))+"*x";		
-				if(round(coeff[0])!=0)html+="+"+convert::to_string(round(coeff[0]))+"";
-				//int res=coeff[2]*(poly_x^2)+coeff[1]*(poly_x^1)+coeff[0];
+				html+="Движение по y<br>";
+				if(round(coeff2[2])!=0)html+=convert::to_string(round(coeff2[2]))+"*x<sup><small>2</small></sup>";
+				if(round(coeff2[1])!=0)html+="+"+convert::to_string(round(coeff2[1]))+"*x";		
+				if(round(coeff2[0])!=0)html+="+"+convert::to_string(round(coeff2[0]))+"";
+				
+				html+="<br>";
+				html+="Наличие<br>";
+				if(round(coeff3[2])!=0)html+=convert::to_string(round(coeff3[2]))+"*x<sup><small>2</small></sup>";
+				if(round(coeff3[1])!=0)html+="+"+convert::to_string(round(coeff3[1]))+"*x";		
+				if(round(coeff3[0])!=0)html+="+"+convert::to_string(round(coeff3[0]))+"";
 				html+="<br></small>";
 				}
+
 				limit_i++;
-				//Вывести результаты
+				
+				
 			}
     		}
+
+	//Compute future state (Newton interpolation) - а потом в завимости от нажатия клавиш 
+	//int future_pixels_image[nwidth][nheight][3];
+	
+	if(i==5)
+	{
+		int future_limit=10;
+		for(int future_i2=0;future_i2<future_limit;future_i2++)
+		{
+			//Render - Bust structurs
+			for(int future_i=0;future_i<pattern_array_size;future_i++)
+			{
+			int offset_x=patterns[future_i][0].x+future_i2;//Offset x
+			int offset_y=patterns[future_i][0].y+future_i2;//Offset y
+			int offset_d=patterns[future_i][0].d1+future_i2;//Offset d - disappearance
+			//Pull double values from array
+			memcpy(&coeff_f[0],&patterns[future_i][0].pattern[0],sizeof(double));
+			memcpy(&coeff_f[1],&patterns[future_i][0].pattern[8],sizeof(double));
+			memcpy(&coeff_f[2],&patterns[future_i][0].pattern[16],sizeof(double));
+			memcpy(&coeff2_f[0],&patterns[future_i][0].pattern[24],sizeof(double));
+			memcpy(&coeff2_f[1],&patterns[future_i][0].pattern[32],sizeof(double));
+			memcpy(&coeff2_f[2],&patterns[future_i][0].pattern[40],sizeof(double));
+			memcpy(&coeff3_f[0],&patterns[future_i][0].pattern[48],sizeof(double));
+			memcpy(&coeff3_f[1],&patterns[future_i][0].pattern[56],sizeof(double));
+			memcpy(&coeff3_f[2],&patterns[future_i][0].pattern[64],sizeof(double));
+			//Compute future pararmeters
+			int res=coeff_f[2]*(offset_x^2)+coeff_f[1]*(offset_x^1)+coeff_f[0];//Move x
+			int res2=coeff2_f[2]*(offset_y^2)+coeff2_f[1]*(offset_y^1)+coeff2_f[0];//Move y
+			//int res3=coeff3_f[2]*(offset_d^2)+coeff3_f[1]*(offset_d^1)+coeff3_f[0];//Disappearance
+
+			//Render image buffer
+			for(int pattern_i=0;pattern_i<50;pattern_i++)
+			{
+			int fx=(int)patterns[future_i][1].pattern[0];
+			int fy=(int)patterns[future_i][1].pattern[2];
+			future_pixels_image[fx][fy][0]=100;
+			future_pixels_image[fx][fy][1]=100;
+			future_pixels_image[fx][fy][2]=100;
+			};
+			}
+		//Save frame in image
+		string number_image=render_square_image2(future_pixels_image,"video");
+		};
+	};
+	
 	//ti = clock() - ti;
-
         //printf("Time: %f \n", (double)ti/CLOCKS_PER_SEC);
-
-	//Server start
+	//Server block start
  	addrlen = sizeof(clientaddr);
         clients[slot] = accept (listenfd, (struct sockaddr *) &clientaddr, &addrlen);
         if (clients[slot]<0)perror ("accept() error");
@@ -286,10 +382,7 @@ int main(int argc, char *argv[])
                 respond(slot,html);
         }
         while (clients[slot]!=-1) slot = (slot+1)%CONNMAX;
-	//Server end
-	
+	//Server block end
 	}
-	///Save html output in file for debugging
-	//savelog(html);
 	return 0;
 }

@@ -1,0 +1,19 @@
+==5191== Memcheck, a memory error detector
+==5191== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==5191== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==5191== Command: build/ai.run
+==5191== 
+Server started at port no. [92m55571[0m with root directory as [92m/home/[0m
+[1;31mИскуственный Интеллект
+[0mИнициализация...
+Процессоров в компьютере: 4
+Общее количество оперативной памяти: 4960 MB
+Объём доступной памяти: 3554 MB
+Объем файла подкачки: 0 MB
+Будет выделена память для 285162 шаблонов
+==5191== Invalid read of size 4
+==5191==    at 0x6A3808B: fgets (iofgets.c:50)
+==5191==    by 0x406EBB: action(int, float) (stdio2.h:263)
+==5191==    by 0x40417C: main (main.cpp:137)
+==5191==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==5191== 
